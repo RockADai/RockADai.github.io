@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="工程的第一步：分析">
+<meta name="keywords" content="STM32">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“仙人板板”STM32版 | 01">
+<meta property="og:url" content="http://yoursite.com/2019/06/02/xrbb1/index.html">
+<meta property="og:site_name" content="阿呆的科学笔记">
+<meta property="og:description" content="工程的第一步：分析">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190602_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190602_2.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190602_3.png">
+<meta property="og:updated_time" content="2019-06-02T16:45:02.862Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“仙人板板”STM32版 | 01">
+<meta name="twitter:description" content="工程的第一步：分析">
+<meta name="twitter:image" content="http://yoursite.com/images/screenshot20190602_1.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/06/02/xrbb1/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>“仙人板板”STM32版 | 01 | 阿呆的科学笔记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿呆的科学笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">摇滚，电子与酒</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/xrbb1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿呆">
+      <meta itemprop="description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
+      <meta itemprop="image" content="/images/doge.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿呆的科学笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“仙人板板”STM32版 | 01
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-06-02 22:16:16" itemprop="dateCreated datePublished" datetime="2019-06-02T22:16:16+08:00">2019-06-02</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-03 00:45:02" itemprop="dateModified" datetime="2019-06-03T00:45:02+08:00">2019-06-03</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/单片机/" itemprop="url" rel="index"><span itemprop="name">单片机</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            <div class="post-description">工程的第一步：分析</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="产品定义"><a href="#产品定义" class="headerlink" title="产品定义"></a>产品定义</h1><p>&emsp;&emsp;“仙人板板”是一套以单片机为基础，集合了大开发板、小开发板、二级开发库和上位机软件的系列产品。这个名字，是我在偶然间听到一句重庆方言“日你个仙人板板儿哦”之后想到的，这句方言本身代表了对他人的美好祝愿，而“板板”这个助词又刚好和本产品“开发板”的属性相吻合。</p>
+<h2 id="大-小开发板"><a href="#大-小开发板" class="headerlink" title="大/小开发板"></a>大/小开发板</h2><p>&emsp;&emsp;这本身并没有明确的概念，只是呆某自己为了明确区分而说明的两个定义。本项目中的大开发板是指基于单片机，板载多种资源，并能够支持主流几种小型嵌入式系统移植和运行的开发板。大开发板上可以部署的资源包括但不限于：SPI、I2C、UART、CAN、485等总线接口；调试接口；多个GPIO引脚引出；LCD屏、数码管、LED等电平实验验证设施；传感器、网络模块等主流延伸功能支持；用于支持操作系统的存储区（FLASH、EEPROM等多个IC组成）。比如下面这个：</p>
+<p><img src="/images/screenshot20190602_1.png" alt="大开发板"></p>
+<font size="1" color="grey"><center>大开发板</center></font>
+
+<p>&emsp;&emsp;与大开发板追求的大而多所不同的是，由于小开发板面向移动、可穿戴、机器人部件等需要尽可能隐藏控制模块的开发场景，故其设计思想追求少而微，这也是区分大小开发板设计的初衷。小板在基本功能保留的前提下，附加器件要尽可能舍去，板子的尺寸要尽可能小，同时，小板应符合物理连接兼容的设计原则，以便于插入或嵌入其他电路板或容器壁等。小板一般是长这样的：</p>
+<p><img src="/images/screenshot20190602_2.png" alt="小开发板"></p>
+<font size="1" color="grey"><center>小开发板</center></font>
+
+<h2 id="二级库"><a href="#二级库" class="headerlink" title="二级库"></a>二级库</h2><p>&emsp;&emsp;目前市场上的MCU芯片在出厂时都配备了函数库，用于封装寄存器操作，并取代使用汇编语言编程的开发方式，降低开发成本，提高效率。然而，这些库都基于寄存器操作，我把这些原厂库称为一级库，因为它们只提供了对IC内部资源的操作（如定时器、ADC通道、DMA等）。在一级库的基础上开发二级库，用于应对主流开发情境，比如我此前跟随团队进行过一个与DS3231实时时钟IC有关的项目，操作该芯片用的库被保留了下来，在之后的项目中直接调用，非常方便。</p>
+<h2 id="上位机软件"><a href="#上位机软件" class="headerlink" title="上位机软件"></a>上位机软件</h2><p>&emsp;&emsp;这里所说的上位机和公司内部开发的，在特定环境下用于控制的上位机不同，我暂且把网上常见的，一般只用于调试的上位机称为通用上位机。虽然网上已经有了很多种不同版本的通用上位机，但极少有相关的高分开源项目。所以我计划自己开发一个通用上位机软件，用于调试自己设计的开发板，同时也是对软件工程的一个大实践，弥补我软件方面工程经验的相对空白。</p>
+<h1 id="开发目的和意义"><a href="#开发目的和意义" class="headerlink" title="开发目的和意义"></a>开发目的和意义</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>&emsp;&emsp;目前计划依次开发“仙人板板”的STM32版本和51版本，之后视情况着手推出DSP版本、ARM+Linux版本和FPGA版本，并且所有版本的硬件和软件将开源。软件代码在完成后上传到Github上，所有硬件原理将分阶段连载到本博客，电路原理图和PCB未来将在博客上提供下载。</p>
+<h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>&emsp;&emsp;1.以后做实验不怕搞坏开发板了，坏了大不了重新焊一块，降低了学习的边际成本；</p>
+<p>&emsp;&emsp;2.造好的轮子提高了自己的开发效率，顺便通过开源，帮助同事和圈内好友们提高开发效率，少加点班；</p>
+<p>&emsp;&emsp;3.简历上有的吹。</p>
+<h1 id="需求分析和可行性分析"><a href="#需求分析和可行性分析" class="headerlink" title="需求分析和可行性分析"></a>需求分析和可行性分析</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>&emsp;&emsp;1.大小开发板支持功能达到预期，资源基本足够使用。</p>
+<p>&emsp;&emsp;2.二级库能支持较多功能和IC，代码简洁，可读性强，核心目标是便于开发。</p>
+<p>&emsp;&emsp;3.上位机软件可调试串口、网络协议，可用于ISP下载，其它延伸的功能需求待实践并完善。</p>
+<h2 id="可行性分析"><a href="#可行性分析" class="headerlink" title="可行性分析"></a>可行性分析</h2><p>&emsp;&emsp;1.网上开发板电路资料和MCU相关例程资料非常丰富，参考价值高。</p>
+<p>&emsp;&emsp;2.上位机软件的开发参考资料较少，但绝大多数使用C++或C#开发，其工具和框架文档详细易得，且多为API操作，对算法要求低。</p>
+<p>&emsp;&emsp;此外，对于本项目来说，有一些不容忽视的威胁存在：</p>
+<p>&emsp;&emsp;1.技术更新越来越快，在未来很可能由于更新换代淘汰了某款现今使用的主控芯片，导致项目其中某个版本被推翻，故开发流程不宜过于拖沓，且开发应以硬件为优先。</p>
+<p>&emsp;&emsp;2.个人电路焊接技术水平有限，在硬件开发中需要有较好的工具和车间场地辅助，在买到房子之前只有我正在供职的公司能提供此类支持。</p>
+<p>&emsp;&emsp;3.每一块IC都是自己花出去的钱，操作时需十分小心，不能大意损坏从而浪费个人资产。</p>
+<p>&emsp;&emsp;综上所述，本项目流程易于制定并完善，参考资料丰富，威胁可规避，故本项目可行。</p>
+<h1 id="产品命名规则"><a href="#产品命名规则" class="headerlink" title="产品命名规则"></a>产品命名规则</h1><table>
+<thead>
+<tr>
+<th>型号编码表</th>
+<th style="text-align:center">开发板类型</th>
+<th style="text-align:center">主控芯片类型</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>大开发板(Various resources)</td>
+<td style="text-align:center">VR-</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>小开发板(Simple core)</td>
+<td style="text-align:center">SC-</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>STM32</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">STM</td>
+</tr>
+<tr>
+<td>STC51</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">STC</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;&emsp;根据上表，本项目开发的基于STM32的大开发板型号命名为VR-STM，其他型号以此类推。未来将会有更多种类的芯片被纳入开发队列，到那时命名规则也将更新。</p>
+<h1 id="MCU选型"><a href="#MCU选型" class="headerlink" title="MCU选型"></a>MCU选型</h1><p>&emsp;&emsp;在本项目中，主控芯片的选型以市场占有率、性价比、外观尺寸、引脚数量为原则。其中，市场占有率的评估以淘宝/天猫平台上同类芯片及其开发板的销量为参考，性价比的评估通过芯片手册和深圳立创电子商城给出的报价为参考。对于STM32芯片的选型评估如下表，其中列出的芯片型号为经过筛选，市场占有率居前列的数款：</p>
+<table>
+<thead>
+<tr>
+<th>芯片型号</th>
+<th style="text-align:center">引脚数</th>
+<th style="text-align:center">主频</th>
+<th style="text-align:center">片上内存</th>
+<th style="text-align:center">PCB封装</th>
+<th style="text-align:center">报价</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>STM32F103C8T6</td>
+<td style="text-align:center">48</td>
+<td style="text-align:center">72M</td>
+<td style="text-align:center">64K</td>
+<td style="text-align:center">LQFP-48</td>
+<td style="text-align:center">11.00RMB</td>
+</tr>
+<tr>
+<td>STM32F103VET6</td>
+<td style="text-align:center">100</td>
+<td style="text-align:center">72M</td>
+<td style="text-align:center">512K</td>
+<td style="text-align:center">LQFP-100</td>
+<td style="text-align:center">18.82RMB</td>
+</tr>
+<tr>
+<td>STM32F103ZET6</td>
+<td style="text-align:center">144</td>
+<td style="text-align:center">72M</td>
+<td style="text-align:center">512K</td>
+<td style="text-align:center">LQFP-144</td>
+<td style="text-align:center">25.03RMB</td>
+</tr>
+<tr>
+<td>STM32F407ZGT6</td>
+<td style="text-align:center">144</td>
+<td style="text-align:center">168M</td>
+<td style="text-align:center">1M</td>
+<td style="text-align:center">LQFP-144</td>
+<td style="text-align:center">38.78RMB</td>
+</tr>
+<tr>
+<td>STM32F429IGT6</td>
+<td style="text-align:center">176</td>
+<td style="text-align:center">180M</td>
+<td style="text-align:center">1M</td>
+<td style="text-align:center">LQFP-176</td>
+<td style="text-align:center">48.23RMB</td>
+</tr>
+</tbody>
+</table>
+<p>&emsp;&emsp;由上表可以看出，对于小板来说，F103C8T6似乎是不二之选，而对于大板选择就比较多了。F103VE是我之前工作中最熟悉的，F103ZE相对F4较便宜，但性能被F4完爆，我认为F4带来的优势完全可以弥补其与F1的价格差。在F4系列中，F429无疑比F407要强，但其接近200的引脚数会提高电路的复杂程度，换个角度来看，与上同理，我认为F429相对F407的性能优势并不能弥补价差，所以放弃F429。</p>
+<p>&emsp;&emsp;最终确定，“仙人板板”VR-STM使用F407ZGT6，SC-STM使用F103C8T6。</p>
+<h1 id="设计思路"><a href="#设计思路" class="headerlink" title="设计思路"></a>设计思路</h1><h2 id="硬件架构"><a href="#硬件架构" class="headerlink" title="硬件架构"></a>硬件架构</h2><p><img src="/images/screenshot20190602_3.png" alt="架构图"></p>
+<font size="1" color="grey"><center>Visio带不动流程图了</center></font>
+
+<p>&emsp;&emsp;总体架构设计思路如上图所示，大开发板和小开发板的区别仅在于是否拥有外部存储、实验器件、网络模块这些设施。</p>
+<h2 id="二级库设计"><a href="#二级库设计" class="headerlink" title="二级库设计"></a>二级库设计</h2><p>&emsp;&emsp;F103的内核为Cortex-M3，F407的内核为Cortex-M4，基于二者的编程差异不大，可以同步开发，且可以根据工作中遇到的情况进行动态更新。如果项目能够收获同事和好友们的支持，还可以通过Github请求协同更新。</p>
+<h2 id="上位机软件-1"><a href="#上位机软件-1" class="headerlink" title="上位机软件"></a>上位机软件</h2><p>&emsp;&emsp;之前的通用上位机较多使用C#开发，然而据我个人了解，目前基于Qt开发似乎更受到推崇。由于Qt的跨平台特性，更由于呆某比较熟悉C++但完全不会C#，所以选择Qt来进行开发。</p>
+<h1 id="开发计划"><a href="#开发计划" class="headerlink" title="开发计划"></a>开发计划</h1><p>&emsp;&emsp;1.画封装……画封装……</p>
+<p>&emsp;&emsp;2.参考网上资料画好原理图，总结知识点并在博客上连载开源</p>
+<p>&emsp;&emsp;3.绘制PCB，完成后保存好源文件，以待之后打包开源</p>
+<p>&emsp;&emsp;4.向厂家投板，焊接，调试（最揪心的一步）</p>
+<p>&emsp;&emsp;5.开发二级库、上位机软件，同时学习并移植FreeRTOS、uCOS-III，通过博客阶段性总结并在Github上开源</p>
+<h1 id="鸣谢"><a href="#鸣谢" class="headerlink" title="鸣谢"></a>鸣谢</h1><p>&emsp;&emsp;感谢野火论坛无私地开源并提供了各类教学资料和视频，发挥了巨大的参考价值，若没有你们我只能在职业发展之路上裹足不前。</p>
+<p>&emsp;&emsp;感谢深圳嘉立创科技发展有限公司，一如既往地提供高质量PCB板和电商服务。</p>
+<p>&emsp;&emsp;感谢我职业之路上的引路人光同学，还有木木木同学和咖喱姐姐，感谢你们一年来对我的鼓励和多方面的支持，没有你们我不知何时才能获得成长和发展，希望我们这个团队永不解散。</p>
+<h1 id="免责声明"><a href="#免责声明" class="headerlink" title="免责声明"></a>免责声明</h1><p>&emsp;&emsp;“仙人板板”系列产品均用于个人开发用途，我个人不会使用该产品以任何方式盈利，如有侵权，请致电邮箱<a href="mailto:919640346@qq.com" target="_blank" rel="noopener">919640346@qq.com</a>。</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>阿呆</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://yoursite.com/2019/06/02/xrbb1/" title="“仙人板板”STM32版 | 01">http://yoursite.com/2019/06/02/xrbb1/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/STM32/" rel="tag"># STM32</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/27/first/" rel="next" title="一个贫穷的入门级云计算用户的心路历程">
+                <i class="fa fa-chevron-left"></i> 一个贫穷的入门级云计算用户的心路历程
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/doge.jpg" alt="阿呆">
+            
+              <p class="site-author-name" itemprop="name">阿呆</p>
+              <div class="site-description motion-element" itemprop="description">全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives">
+                
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                    <span class="site-state-item-count">1</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#产品定义"><span class="nav-number">1.</span> <span class="nav-text">产品定义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#大-小开发板"><span class="nav-number">1.1.</span> <span class="nav-text">大/小开发板</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二级库"><span class="nav-number">1.2.</span> <span class="nav-text">二级库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上位机软件"><span class="nav-number">1.3.</span> <span class="nav-text">上位机软件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发目的和意义"><span class="nav-number">2.</span> <span class="nav-text">开发目的和意义</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#目的"><span class="nav-number">2.1.</span> <span class="nav-text">目的</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#意义"><span class="nav-number">2.2.</span> <span class="nav-text">意义</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#需求分析和可行性分析"><span class="nav-number">3.</span> <span class="nav-text">需求分析和可行性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#需求"><span class="nav-number">3.1.</span> <span class="nav-text">需求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可行性分析"><span class="nav-number">3.2.</span> <span class="nav-text">可行性分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#产品命名规则"><span class="nav-number">4.</span> <span class="nav-text">产品命名规则</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#MCU选型"><span class="nav-number">5.</span> <span class="nav-text">MCU选型</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#设计思路"><span class="nav-number">6.</span> <span class="nav-text">设计思路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件架构"><span class="nav-number">6.1.</span> <span class="nav-text">硬件架构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二级库设计"><span class="nav-number">6.2.</span> <span class="nav-text">二级库设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#上位机软件-1"><span class="nav-number">6.3.</span> <span class="nav-text">上位机软件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发计划"><span class="nav-number">7.</span> <span class="nav-text">开发计划</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#鸣谢"><span class="nav-number">8.</span> <span class="nav-text">鸣谢</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#免责声明"><span class="nav-number">9.</span> <span class="nav-text">免责声明</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿呆</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

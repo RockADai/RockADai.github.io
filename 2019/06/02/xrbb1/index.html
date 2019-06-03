@@ -151,7 +151,7 @@
 <meta property="og:image" content="http://yoursite.com/images/screenshot20190602_1.png">
 <meta property="og:image" content="http://yoursite.com/images/screenshot20190602_2.png">
 <meta property="og:image" content="http://yoursite.com/images/screenshot20190602_3.png">
-<meta property="og:updated_time" content="2019-06-02T16:45:02.862Z">
+<meta property="og:updated_time" content="2019-06-03T06:10:36.173Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="“仙人板板”STM32版 | 01">
 <meta name="twitter:description" content="工程的第一步：分析">
@@ -436,7 +436,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-03 00:45:02" itemprop="dateModified" datetime="2019-06-03T00:45:02+08:00">2019-06-03</time>
+                <time title="修改时间：2019-06-03 14:10:36" itemprop="dateModified" datetime="2019-06-03T14:10:36+08:00">2019-06-03</time>
               
             
           </span>
@@ -491,7 +491,7 @@
 
       
         <h1 id="产品定义"><a href="#产品定义" class="headerlink" title="产品定义"></a>产品定义</h1><p>&emsp;&emsp;“仙人板板”是一套以单片机为基础，集合了大开发板、小开发板、二级开发库和上位机软件的系列产品。这个名字，是我在偶然间听到一句重庆方言“日你个仙人板板儿哦”之后想到的，这句方言本身代表了对他人的美好祝愿，而“板板”这个助词又刚好和本产品“开发板”的属性相吻合。</p>
-<h2 id="大-小开发板"><a href="#大-小开发板" class="headerlink" title="大/小开发板"></a>大/小开发板</h2><p>&emsp;&emsp;这本身并没有明确的概念，只是呆某自己为了明确区分而说明的两个定义。本项目中的大开发板是指基于单片机，板载多种资源，并能够支持主流几种小型嵌入式系统移植和运行的开发板。大开发板上可以部署的资源包括但不限于：SPI、I2C、UART、CAN、485等总线接口；调试接口；多个GPIO引脚引出；LCD屏、数码管、LED等电平实验验证设施；传感器、网络模块等主流延伸功能支持；用于支持操作系统的存储区（FLASH、EEPROM等多个IC组成）。比如下面这个：</p>
+<h2 id="大-小开发板"><a href="#大-小开发板" class="headerlink" title="大/小开发板"></a>大/小开发板</h2><p>&emsp;&emsp;这本身并没有明确的概念，只是呆某自己为了明确区分而说明的两个定义。本项目中的大开发板是指基于单片机，板载多种资源，并能够支持主流几种小型嵌入式系统移植和运行的开发板。大开发板上可以部署的资源包括但不限于：SPI、I2C、UART、CAN、485等总线接口；调试接口；多个GPIO引脚引出；LCD屏、数码管、LED等实验器件；传感器、网络模块等主流延伸功能支持；用于支持操作系统的存储区。比如下面这个：</p>
 <p><img src="/images/screenshot20190602_1.png" alt="大开发板"></p>
 <font size="1" color="grey"><center>大开发板</center></font>
 
@@ -504,7 +504,7 @@
 <h1 id="开发目的和意义"><a href="#开发目的和意义" class="headerlink" title="开发目的和意义"></a>开发目的和意义</h1><h2 id="目的"><a href="#目的" class="headerlink" title="目的"></a>目的</h2><p>&emsp;&emsp;目前计划依次开发“仙人板板”的STM32版本和51版本，之后视情况着手推出DSP版本、ARM+Linux版本和FPGA版本，并且所有版本的硬件和软件将开源。软件代码在完成后上传到Github上，所有硬件原理将分阶段连载到本博客，电路原理图和PCB未来将在博客上提供下载。</p>
 <h2 id="意义"><a href="#意义" class="headerlink" title="意义"></a>意义</h2><p>&emsp;&emsp;1.以后做实验不怕搞坏开发板了，坏了大不了重新焊一块，降低了学习的边际成本；</p>
 <p>&emsp;&emsp;2.造好的轮子提高了自己的开发效率，顺便通过开源，帮助同事和圈内好友们提高开发效率，少加点班；</p>
-<p>&emsp;&emsp;3.简历上有的吹。</p>
+<p>&emsp;&emsp;3.简历上有牛皮吹。</p>
 <h1 id="需求分析和可行性分析"><a href="#需求分析和可行性分析" class="headerlink" title="需求分析和可行性分析"></a>需求分析和可行性分析</h1><h2 id="需求"><a href="#需求" class="headerlink" title="需求"></a>需求</h2><p>&emsp;&emsp;1.大小开发板支持功能达到预期，资源基本足够使用。</p>
 <p>&emsp;&emsp;2.二级库能支持较多功能和IC，代码简洁，可读性强，核心目标是便于开发。</p>
 <p>&emsp;&emsp;3.上位机软件可调试串口、网络协议，可用于ISP下载，其它延伸的功能需求待实践并完善。</p>

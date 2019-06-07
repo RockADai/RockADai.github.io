@@ -140,16 +140,26 @@
 
 
 
-  <meta name="description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
-<meta property="og:type" content="website">
-<meta property="og:title" content="阿呆的科学笔记">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="先制定一个小目标">
+<meta name="keywords" content="STM32">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“仙人板板”STM32版02 | 小板搞起">
+<meta property="og:url" content="http://yoursite.com/2019/06/06/xrbb2/index.html">
 <meta property="og:site_name" content="阿呆的科学笔记">
-<meta property="og:description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
+<meta property="og:description" content="先制定一个小目标">
 <meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190606.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190606_2.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190606_3.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190606_4.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190606_5.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190607_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190607_2.png">
+<meta property="og:updated_time" content="2019-06-07T06:51:20.514Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿呆的科学笔记">
-<meta name="twitter:description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
+<meta name="twitter:title" content="“仙人板板”STM32版02 | 小板搞起">
+<meta name="twitter:description" content="先制定一个小目标">
+<meta name="twitter:image" content="http://yoursite.com/images/screenshot20190606.png">
 
 
 
@@ -157,7 +167,7 @@
 
   
   
-  <link rel="canonical" href="http://yoursite.com/">
+  <link rel="canonical" href="http://yoursite.com/2019/06/06/xrbb2/">
 
 
 
@@ -167,7 +177,7 @@
   };
 </script>
 
-  <title>阿呆的科学笔记</title>
+  <title>“仙人板板”STM32版02 | 小板搞起 | 阿呆的科学笔记</title>
   
 
 
@@ -215,8 +225,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -258,7 +267,7 @@
         
         
           
-          <li class="menu-item menu-item-home menu-item-active">
+          <li class="menu-item menu-item-home">
 
     
     
@@ -354,9 +363,9 @@
           
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
 
@@ -388,10 +397,8 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/06/xrbb2/" class="post-title-link" itemprop="url">“仙人板板”STM32版02 | 小板搞起</a>
+          <h1 class="post-title" itemprop="name headline">“仙人板板”STM32版02 | 小板搞起
+
               
             
           </h1>
@@ -471,6 +478,8 @@
           
 
           
+            <div class="post-description">先制定一个小目标</div>
+          
 
         </div>
       </header>
@@ -485,18 +494,42 @@
       
 
       
-        
-          先制定一个小目标
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/06/xrbb2/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
+        <p>&emsp;&emsp;画了两天封装之后，正式开搞。本来想先开大板的，但是突然想起手头有一块面包板，思来想去，最后觉得，不如先搞小板，再做些实验，弄懂了的模块再画到大板上。所以，就开始咯。</p>
+<p>&emsp;&emsp;小板基本就是一个单片机的最小系统。那么最小系统必不可少的是啥呢？自然是时钟、系统复位和BOOT。之前跟团队做项目的时候这部分已经基本很熟了，所以直接三开花。</p>
+<h1 id="单片机"><a href="#单片机" class="headerlink" title="单片机"></a>单片机</h1><p>&emsp;&emsp;一个单片机的最小系统当然必须要有单片机咯，不过要想在板子上正确地放下这个单片机还是有点讲究的。首先要明确好芯片引脚的定义：</p>
+<p><img src="/images/screenshot20190606.png" alt="48脚STM32"></p>
+<font size="1" color="grey"><center>48脚STM32的定义</center></font>
+
+<p>&emsp;&emsp;对于开发板来说，MCU的引脚可以分为电源及外围电路引脚，和IO引出引脚两部分。所以，在画原理图时，我喜欢把芯片分成上图这样的两部分，左部分只需要用网络标号引出即可，右部分一般只需要做些抗干扰的处理即可，非常方便直观。</p>
+<h2 id="去耦"><a href="#去耦" class="headerlink" title="去耦"></a>去耦</h2><p>&emsp;&emsp;有源器件开关时会产生高频噪声，并沿着电源线传播，通过去耦电容，可以减少噪声在板子上的传播，并将噪声引导到地。以前做项目用的全是0.1uF的电容，因为0.1uF电容的分布电感典型值为5nH，根据$f=\frac{1}{2 \pi \sqrt{LC}}$算出其并行共振频率的值在7MHz左右，这说明其对于10MHz以下的噪声去耦效果良好。其实去耦电容选用并不严格，可以按照$C=\frac{1}{F}$来计算。我们的高速时钟取8MHz，所以0.1uF电容是最好的选择。</p>
+<p><img src="/images/screenshot20190606_2.png" alt="去耦"></p>
+<font size="1" color="grey"><center>实际情况是每个VDD用一个0.1uF去耦，原理图中因为网络等效，所以用更直观的画法</center></font>
+
+<p>&emsp;&emsp;值得注意的是，因为小板在计划中是不会用到电池备份区域的，所以按照IC手册中对于VBAT引脚的要求，我把VBAT直接接在VDD上并去耦了。</p>
+<p><img src="/images/screenshot20190606_3.png" alt="电池备份"></p>
+<font size="1" color="grey"><center>摘自STM32F10x中文手册</center></font>
+
+<h2 id="BEAD电路"><a href="#BEAD电路" class="headerlink" title="BEAD电路"></a>BEAD电路</h2><p>&emsp;&emsp;在开始跟团队做项目之前我是不知道有这回事的。为了在进行ADC（模数转换）时电压数值能够被正确采集，需要把模拟电源和数字电源分离开以降低干扰，参考手册，得知VDD和VDDA的电压差不得大于0.3V，所以用磁珠组成LC等效电路比较好。通过学习和参考大神的设计，我总结出了如下这种只需要一颗磁珠的方案：</p>
+<p><img src="/images/screenshot20190606_4.png" alt="BEAD电路"></p>
+<font size="1" color="grey"><center>隔离模拟电源与数字电源</center></font>
+
+<p>&emsp;&emsp;以上这些一开始做全是凭大神指导和经验总结，直到现在才开始学习它背后的原理，真是惭愧惭愧……</p>
+<h1 id="时钟"><a href="#时钟" class="headerlink" title="时钟"></a>时钟</h1><p>&emsp;&emsp;STM32的时钟产生方式分为内部时钟和外部时钟两种，两个部分又都分别有一个高速时钟和一个低速时钟。内部的高速（HSI）和低速（LSI）时钟已经通过RC振荡器实现了，我的工作是加上外部的HSE和LSE两个时钟。查看STM32的手册，得到LSE的典型值是32.768kHz，HSE典型值是8MHz。</p>
+<p>&emsp;&emsp;由于外部时钟源用了无源晶振，其两端要拉负载电容接地，滤掉谐波。负载电容的取值和晶振的等效RC电路有关，到立创商城查看相关的数据手册，HSE取20pF，LSE取10pF。</p>
+<p><img src="/images/screenshot20190606_5.png" alt="晶振电路"></p>
+<font size="1" color="grey"><center>这一部分比较好理解</center></font>
+
+<h1 id="复位"><a href="#复位" class="headerlink" title="复位"></a>复位</h1><p>&emsp;&emsp;STM32产生系统复位的其中一个条件是NRST引脚上出现低电平，引起外部复位。常用的电路图如下：</p>
+<p><img src="/images/screenshot20190607_1.png" alt="复位电路"></p>
+<font size="1" color="grey"><center>几乎所有的STM32开发板复位都是这样画的</center></font>
+
+<p>&emsp;&emsp;如图，通常状态下轻触开关引脚两两导通，中间断开，NRST经过上拉电阻获得高电平。轻触开关被按下时，4个引脚全部被导通，NRST被拉低，实现复位。系统上电瞬间，电容充电导致NRST在上电瞬间被拉为低电平，这个信号为微秒级，足以完成一次复位。</p>
+<h1 id="BOOT"><a href="#BOOT" class="headerlink" title="BOOT"></a>BOOT</h1><p>&emsp;&emsp;根据手册，STM32拥有三种BOOT启动方式：</p>
+<p><img src="/images/screenshot20190607_2.png" alt="BOOT"></p>
+<font size="1" color="grey"><center>通过跳帽选择BOOT方式</center></font>
+
+<p>&emsp;&emsp;在STM32上，常态时应用的运行都是从主闪存启动的。当我们需要使用串口ISP下载的功能时，将BOOT0设置为1（用跳帽拉到高电平），手动复位之后，STM32会从系统存储器启动，因为在芯片的BootLoader中ISP的固件写在这里。下载完成后，将BOOT0重新设置为0，再手动复位，将运行ISP下载的程序。此外从内置SRAM启动方式多用于程序调试，因为SRAM没有程序存储能力，从这个模式启动代码可以进行快速调试，不必擦除Flash（惭愧，这功能我居然没用过）。</p>
+
       
     </div>
 
@@ -514,375 +547,63 @@
     
 
     
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>阿呆</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://yoursite.com/2019/06/06/xrbb2/" title="“仙人板板”STM32版02 | 小板搞起">http://yoursite.com/2019/06/06/xrbb2/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
 
     <footer class="post-footer">
       
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/02/xrbb1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阿呆">
-      <meta itemprop="description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
-      <meta itemprop="image" content="/images/doge.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿呆的科学笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/06/02/xrbb1/" class="post-title-link" itemprop="url">“仙人板板”STM32版01 | 总序</a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-
-            
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-06-02 22:16:16" itemprop="dateCreated datePublished" datetime="2019-06-02T22:16:16+08:00">2019-06-02</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-06 14:16:46" itemprop="dateModified" datetime="2019-06-06T14:16:46+08:00">2019-06-06</time>
-              
-            
-          </span>
-
+        <div class="post-tags">
           
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/单片机/" itemprop="url" rel="index"><span itemprop="name">单片机</span></a></span>
-
-                
-                
-              
-            </span>
+            <a href="/tags/STM32/" rel="tag"># STM32</a>
           
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
         </div>
-      </header>
-    
+      
 
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
+      
       
       
 
       
-        
-          工程的第一步：分析
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/06/02/xrbb1/">
-                阅读全文 &raquo;
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/02/xrbb1/" rel="next" title="“仙人板板”STM32版01 | 总序">
+                <i class="fa fa-chevron-left"></i> “仙人板板”STM32版01 | 总序
               </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/27/first/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="阿呆">
-      <meta itemprop="description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
-      <meta itemprop="image" content="/images/doge.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="阿呆的科学笔记">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                
-                <a href="/2019/05/27/first/" class="post-title-link" itemprop="url">一个贫穷的入门级云计算用户的心路历程</a>
-              
             
-          </h1>
-        
+          </div>
 
-        <div class="post-meta">
-          <span class="post-time">
+          <span class="post-nav-divider"></span>
 
+          <div class="post-nav-prev post-nav-item">
             
-            
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-
-              
-                
-              
-
-              <time title="创建时间：2019-05-27 18:35:46" itemprop="dateCreated datePublished" datetime="2019-05-27T18:35:46+08:00">2019-05-27</time>
-            
-
-            
-              
-
-              
-                
-                <span class="post-meta-divider">|</span>
-                
-
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-calendar-check-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">更新于</span>
-                
-                <time title="修改时间：2019-06-02 19:33:43" itemprop="dateModified" datetime="2019-06-02T19:33:43+08:00">2019-06-02</time>
-              
-            
-          </span>
-
-          
-            <span class="post-category">
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">分类于</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/随笔/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a></span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
+          </div>
         </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          开坑第一篇
-          <!--noindex-->
-          
-            <div class="post-button text-center">
-              <a class="btn" href="/2019/05/27/first/">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-      
-    
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </div>
@@ -892,14 +613,15 @@
   </article>
 
 
-    
-  </section>
-
-  
+  </div>
 
 
           </div>
           
+
+  
+
+
 
         </div>
         
@@ -919,8 +641,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1014,6 +745,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#单片机"><span class="nav-number">1.</span> <span class="nav-text">单片机</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#去耦"><span class="nav-number">1.1.</span> <span class="nav-text">去耦</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#BEAD电路"><span class="nav-number">1.2.</span> <span class="nav-text">BEAD电路</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#时钟"><span class="nav-number">2.</span> <span class="nav-text">时钟</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复位"><span class="nav-number">3.</span> <span class="nav-text">复位</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#BOOT"><span class="nav-number">4.</span> <span class="nav-text">BOOT</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       
@@ -1145,6 +893,10 @@
 
 
   
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
 
   
 
@@ -1161,6 +913,8 @@
   
 
 
+  
+
 
   
 
@@ -1175,16 +929,6 @@
   
 
   
-  
-    
-      
-        
-      
-    
-      
-    
-      
-    
   
 
   

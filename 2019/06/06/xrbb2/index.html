@@ -155,7 +155,7 @@
 <meta property="og:image" content="http://yoursite.com/images/screenshot20190606_5.png">
 <meta property="og:image" content="http://yoursite.com/images/screenshot20190607_1.png">
 <meta property="og:image" content="http://yoursite.com/images/screenshot20190607_2.png">
-<meta property="og:updated_time" content="2019-06-07T07:02:00.334Z">
+<meta property="og:updated_time" content="2019-06-09T13:54:53.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="“仙人板板”STM32版02 | 小板搞起">
 <meta name="twitter:description" content="先制定一个小目标">
@@ -440,7 +440,7 @@
                 
                   <span class="post-meta-item-text">更新于</span>
                 
-                <time title="修改时间：2019-06-07 15:02:00" itemprop="dateModified" datetime="2019-06-07T15:02:00+08:00">2019-06-07</time>
+                <time title="修改时间：2019-06-09 21:54:53" itemprop="dateModified" datetime="2019-06-09T21:54:53+08:00">2019-06-09</time>
               
             
           </span>
@@ -530,7 +530,7 @@
 
 <p>&emsp;&emsp;在STM32上，常态时应用的运行都是从主闪存启动的。当我们需要使用串口ISP下载的功能时，将BOOT0设置为1（用跳帽拉到高电平），手动复位之后，STM32会从系统存储器启动，因为在芯片的BootLoader中ISP的固件写在这里。下载完成后，将BOOT0重新设置为0，再手动复位，将运行ISP下载的程序。此外从内置SRAM启动方式多用于程序调试，因为SRAM没有程序存储能力，从这个模式启动代码可以进行快速调试，不必擦除Flash（惭愧，这功能我居然没用过）。</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>&emsp;&emsp;本集中我已完成了单片机及其外围电路的设计。STM32的外围电路通常由这4个要素组成：抗EMI处理、复位电路、外部时钟和BOOT选择。之后，若要搭建一个完整的最小系统，只需要再设计供电和调试接口，引出空闲GPIO，整个小板设计就完成了。</p>
-<h1 id="下集预告"><a href="#下集预告" class="headerlink" title="下集预告"></a>下集预告</h1><p>&emsp;&emsp;呆某将现场学习一个新的接口，据说它拥有能够淘汰掉肥胖的JTAG接口的能力哟！</p>
+<h1 id="下集预告"><a href="#下集预告" class="headerlink" title="下集预告"></a>下集预告</h1><p>&emsp;&emsp;5线SWD接口的首次实践，还有最烦的USB接口供电+串口ISP。这次要认真地把ISP电路弄明白再画了。</p>
 
       
     </div>

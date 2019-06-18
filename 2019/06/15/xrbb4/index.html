@@ -80,7 +80,7 @@
   
     
     
-    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|PT Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
   
 
 
@@ -140,18 +140,31 @@
 
 
 
-  <meta name="description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
+  <meta name="description" content="遇事不决先Hello个world">
 <meta name="keywords" content="Qt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="“仙人板板”Master 01 | Qt初体验">
 <meta property="og:url" content="http://yoursite.com/2019/06/15/xrbb4/index.html">
 <meta property="og:site_name" content="阿呆的科学笔记">
-<meta property="og:description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
+<meta property="og:description" content="遇事不决先Hello个world">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-06-15T08:15:30.160Z">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190615_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190613_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190614_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190614_2.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190614_3.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190615_2.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190615_3.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190615_4.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190615_5.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190615_6.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190618_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20190618_2.png">
+<meta property="og:updated_time" content="2019-06-18T14:00:06.187Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="“仙人板板”Master 01 | Qt初体验">
-<meta name="twitter:description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
+<meta name="twitter:description" content="遇事不决先Hello个world">
+<meta name="twitter:image" content="http://yoursite.com/images/screenshot20190615_1.png">
 
 
 
@@ -415,12 +428,24 @@
                 
               
 
-              <time title="创建时间：2019-06-15 16:11:03 / 修改时间：16:15:30" itemprop="dateCreated datePublished" datetime="2019-06-15T16:11:03+08:00">2019-06-15</time>
+              <time title="创建时间：2019-06-15 16:11:03" itemprop="dateCreated datePublished" datetime="2019-06-15T16:11:03+08:00">2019-06-15</time>
             
 
             
               
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2019-06-18 22:00:06" itemprop="dateModified" datetime="2019-06-18T22:00:06+08:00">2019-06-18</time>
               
             
           </span>
@@ -458,6 +483,8 @@
           
 
           
+            <div class="post-description">遇事不决先Hello个world</div>
+          
 
         </div>
       </header>
@@ -472,7 +499,62 @@
       
 
       
-        
+        <p>&emsp;&emsp;首先我要表示一下，SC-STM板已经委托给厂家了，这次的单子里不仅下了PCB还下了SMT贴片，以防我这种CXK一般的焊接水平再把MCU搞坏掉。再加上还有半个月就搬家了，一段时间内硬件开发应该是做不了了，所以先学学Qt，顺便把上位机弄个大概。</p>
+<h1 id="Hello-fxckin’-world"><a href="#Hello-fxckin’-world" class="headerlink" title="Hello fxckin’ world"></a>Hello fxckin’ world</h1><p>&emsp;&emsp;说来惭愧，呆某的VS2017还没用过几次呢，微软都已经发布VS2019了。VS的卡是众所周知的，我也很想看看新版怎么样的呀，然而鉴于VS系列软件的庞大体量，暂时还是算了吧，太浪费时间（其实就是电脑配置差）。</p>
+<p><img src="/images/screenshot20190615_1.png" alt="表情包"></p>
+<p>&emsp;&emsp;下载安装Qt用了两个小时，磁盘占用空间约15G，但是把开发环境配置在VS2017上却很方便，前方持续多图警告：</p>
+<p><img src="/images/screenshot20190613_1.png" alt="1"></p>
+<font size="1" color="grey"><center>Windows平台下载这个源文件</center></font>
+
+<p><img src="/images/screenshot20190614_1.png" alt="2"></p>
+<font size="1" color="grey"><center>下载VS2017的Qt插件</center></font>
+
+<p><img src="/images/screenshot20190614_2.png" alt="3"></p>
+<font size="1" color="grey"><center>再在VS上装个扩展</center></font>
+
+<p><img src="/images/screenshot20190614_3.png" alt="4"></p>
+<font size="1" color="grey"><center>配置好路径</center></font>
+
+<p>&emsp;&emsp;按照以上操作一波之后，Qt+VS的开发环境就搭建好了，接下来新建一个工程来Hello一下。</p>
+<p><img src="/images/screenshot20190615_2.png" alt="1"></p>
+<font size="1" color="grey"><center>VS新建一个Qt GUI Application</center></font>
+
+<p><img src="/images/screenshot20190615_3.png" alt="2"></p>
+<font size="1" color="grey"><center>这里需要勾选项目所需的功能模块，暂时默认</center></font>
+
+<p><img src="/images/screenshot20190615_4.png" alt="3"></p>
+<font size="1" color="grey"><center>目录结构</center></font>
+
+<p>&emsp;&emsp;基本上一路next就可以完成，完成后的工程目录中有两个C++源文件，一个头文件，一个用来存放设计资源的.qrc文件，还有一个可视化设计UI的.ui文件。此时如果没有对代码作任何改动，运行项目会生成一个空的窗口。这时候可以修改入口函数来Hello一下了：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"FirstWindow.h"</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QtWidgets/QApplication&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;QLabel&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc,<span class="keyword">char</span> *argv[])</span></span>&#123;</span><br><span class="line">    <span class="function">QApplication <span class="title">a</span><span class="params">(argc,argv)</span></span>;<span class="comment">//初始化一个应用程序</span></span><br><span class="line">    QLabel *label = <span class="keyword">new</span> QLabel(<span class="string">"Fxck you!"</span>);<span class="comment">//用字面值初始化一个QLabel对象</span></span><br><span class="line">    label -&gt; show();<span class="comment">//用show()函数使组件可见</span></span><br><span class="line">    <span class="keyword">return</span> a.exec();<span class="comment">//处理返回</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>&emsp;&emsp;只需将main.cpp改成上面这样，就可以生成一个小弹窗，效果如下：</p>
+<p><img src="/images/screenshot20190615_5.png" alt="Hello world"></p>
+<font size="1" color="grey"><center>Hello一下</center></font>
+
+<h1 id="三种开发方式"><a href="#三种开发方式" class="headerlink" title="三种开发方式"></a>三种开发方式</h1><p>&emsp;&emsp;通过在网上看了几番教程资料，呆某发现Qt的开发形式比较多样。可以只用编写C++代码的方式开发，还可以使用Qt Designer工具编辑项目生成的.ui文件，进行可视化UI开发，也可以用QML的方式来开发。</p>
+<h2 id="纯代码"><a href="#纯代码" class="headerlink" title="纯代码"></a>纯代码</h2><p>&emsp;&emsp;下面是一个用纯代码方式实现的小对话框，它并没有实质性的功能，只是对Qt的信号-槽机制稍微演示了一番。当用户在输入框中输入字符时find按钮会变为可用状态，只是你并不能真的find到什么而已。不过有一个功能让我眼前一亮，在初始化CheckBox等组件名字的字符串中的其中一个单词前加一个&amp;符号，可以实现Alt+该单词首字母的快捷键操作。</p>
+<p><img src="/images/screenshot20190615_6.png" alt="对话框例程"></p>
+<font size="1" color="grey"><center>组件间的交互</center></font>
+
+<p>&emsp;&emsp;比如我初始化Match case这个CheckBox用的字符串是”Match &amp;case”，运行时’c’下面就会出现下划线，然后Alt+c就可以让这个CheckBox变为勾选状态。想想从小就接触的Windows软件，原来那些选项和按钮的快捷键是这么实现的，确实有种恍然大悟的感觉。</p>
+<h2 id="UI文件"><a href="#UI文件" class="headerlink" title="UI文件"></a>UI文件</h2><p>&emsp;&emsp;在使用VS创建第一个例程的时候，工程目录下生成了一个.ui文件，直接点开一看，发现是个可视化的UI设计界面，通过鼠标拖动组件就可以进行窗口的布局，总体上和Android App的界面开发非常相似：</p>
+<p><img src="/images/screenshot20190618_1.png" alt=".ui文件"></p>
+<font size="1" color="grey"><center>ui文件的开发界面</center></font>
+
+<p>&emsp;&emsp;用VSCode打开这个文件之后，呆某发现它其实就是个XML文档，但要想解析它，在程序主类的构造函数里必须有这句话：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ui.setupUi(<span class="keyword">this</span>);</span><br></pre></td></tr></table></figure></p>
+<p>因为.ui的解析在代码中使用了另外的命名空间，所以派生主类的基类必须和生成.ui的类是同一个。比如在第一个例程中，主类一开始选择继承自QMainWindow，我改成了QDialog并注释了上面那句，例程才能够运行，而现在如果不修改基类名，直接取消注释，编译器就会报错。</p>
+<p>&emsp;&emsp;然而修改基类名之后再编译调试，居然就不显示窗口了！经过了好一番注释大法，找到了问题关键，即这句：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">setFixedHeight(sizeHint.height());</span><br></pre></td></tr></table></figure></p>
+<p>只要注释掉这句，调试时就能显示窗口，但只能生成.ui文件中的空窗口，第一个例程的小对话框不能生成了，可能是优先加载.ui的命名空间吧……那为什么之前的代码无效了呢？又为什么setFixedHeight这个函数会阻止.ui窗口的生成呢？这两个问题Mark住，以后找到了答案就在博客上记载下来。</p>
+<p>&emsp;&emsp;如果用.ui文件进行开发，一般只需要在Qt Designer上用鼠标操作，不过如果要用到自定义的信号/槽函数，那还是要写代码的。通过.ui文件，呆某做了第二个例程，通过选择RadioButton来修改输入框中文本的字体：</p>
+<p><img src="/images/screenshot20190618_2.png" alt=".ui文件"></p>
+<font size="1" color="grey"><center>前几天才看完权游</center></font>
+
+<p>&emsp;&emsp;对于.ui开发，个人感觉不是很适合自己，可能因为我已经习惯了代码表示逻辑，所以在.ui上面定义组件的逻辑感觉不够直观。</p>
+<h2 id="QML"><a href="#QML" class="headerlink" title="QML"></a>QML</h2><p>&emsp;&emsp;在目前的Qt5版本，出现了一种新的Qt Quick开发方式，使用QML脚本语言开发UI，而业务逻辑和算法仍使用C++，两者构成一种混合编程方式。QML本身的语法和CSS非常相似，而在其中甚至可以嵌入Javascript编写简单逻辑。因为这种方式对于呆某比较陌生，而Qt for VS又不支持Qt Quick，所以就没有写例程。不过感觉QML/C++混合编程应该挺硬核的。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>&emsp;&emsp;经过一番粗略的学习，呆某认为现阶段用Qt原生C++开发仙人板板上位机会比较顺手。为了在选择之前做一下评估，我到Github上看了用Qt做的高分项目，发现QML和C++都有很多人用，目前C++使用者要略多于QML，但星数最高的项目是一个用QML做的仿《辐射4》风格跨平台终端。那个项目看上去特别漂亮，所以我矛盾了，思虑一番，想选用C++，又不甘心呆在舒适区，怎么选好呢？</p>
+<p>&emsp;&emsp;通过比较现有的用户比较多的几款STM32上位机，呆某认为这些软件基本以性能为主，UI相对比较简单，而程序占用空间小，运行流畅。QML做的UI非常漂亮，但由于脚本语言的特性，性能会略受影响。最终我决定，先用C++做，等到之后有扩展功能的计划时加入QML重构一下（flag）。</p>
+<h1 id="下集预告"><a href="#下集预告" class="headerlink" title="下集预告"></a>下集预告</h1><p>&emsp;&emsp;SC-STM的板子快到货了，拿到手之后要先调试一下，不知道结果会如何，还真是有点忐忑呢……</p>
+
       
     </div>
 
@@ -584,8 +666,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <div class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <div class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -683,6 +774,23 @@
         </div>
       </div>
 
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Hello-fxckin’-world"><span class="nav-number">1.</span> <span class="nav-text">Hello fxckin’ world</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#三种开发方式"><span class="nav-number">2.</span> <span class="nav-text">三种开发方式</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#纯代码"><span class="nav-number">2.1.</span> <span class="nav-text">纯代码</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#UI文件"><span class="nav-number">2.2.</span> <span class="nav-text">UI文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#QML"><span class="nav-number">2.3.</span> <span class="nav-text">QML</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#总结"><span class="nav-number">3.</span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下集预告"><span class="nav-number">4.</span> <span class="nav-text">下集预告</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
       
 
       

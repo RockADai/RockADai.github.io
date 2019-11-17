@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Monda:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Lobster Two:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","display":"post","offset":12,"onmobile":false,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: false,
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="VR-STM的进展以及这段时间的一些思考">
+<meta name="keywords" content="STM32">
+<meta property="og:type" content="article">
+<meta property="og:title" content="“仙人板板”STM32版05 | 有时候也会不知所措">
+<meta property="og:url" content="http://yoursite.com/2019/11/17/xrbb6/index.html">
+<meta property="og:site_name" content="阿呆的科学笔记">
+<meta property="og:description" content="VR-STM的进展以及这段时间的一些思考">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20191006_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20191006_2.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20191006_3.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20191117_1.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20191117_2.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20191117_3.png">
+<meta property="og:image" content="http://yoursite.com/images/screenshot20191117_4.png">
+<meta property="og:updated_time" content="2019-11-17T15:39:59.477Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="“仙人板板”STM32版05 | 有时候也会不知所措">
+<meta name="twitter:description" content="VR-STM的进展以及这段时间的一些思考">
+<meta name="twitter:image" content="http://yoursite.com/images/screenshot20191006_1.png">
+
+
+
+
+
+  
+  
+  <link rel="canonical" href="http://yoursite.com/2019/11/17/xrbb6/">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>“仙人板板”STM32版05 | 有时候也会不知所措 | 阿呆的科学笔记</title>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">阿呆的科学笔记</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">摇滚，电子与酒</p>
+      
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-th"></i> <br>分类</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/17/xrbb6/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="阿呆">
+      <meta itemprop="description" content="全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~">
+      <meta itemprop="image" content="/images/doge.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="阿呆的科学笔记">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">“仙人板板”STM32版05 | 有时候也会不知所措
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2019-11-17 22:12:19 / 修改时间：23:39:59" itemprop="dateCreated datePublished" datetime="2019-11-17T22:12:19+08:00">2019-11-17</time>
+            
+
+            
+              
+
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/单片机开发/" itemprop="url" rel="index"><span itemprop="name">单片机开发</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+            <div class="post-description">VR-STM的进展以及这段时间的一些思考</div>
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>&emsp;&emsp;忙碌了这么久，感觉这份工作和去年的实习一样五味杂陈，这博客的更新也一直拖到现在。事情总是很多，可收获好像并不多，该想想办法打破这个局面了。</p>
+<h1 id="改板"><a href="#改板" class="headerlink" title="改板"></a>改板</h1><p>&emsp;&emsp;在公司干（hua）活（shui）的时候接触到了一些EMC的知识，再加上仔细看了一遍F407的手册，发现之前一个月断断续续画的内容好多都要改，都不对，枯了。为了板子能正常工作，不让制作费打水漂，只能一点一点去改。不过这几个月工作这种事情碰见多了，居然不觉得多麻烦，可能这工作真的给我磨炼出了耐心。</p>
+<h2 id="一些不大的改动"><a href="#一些不大的改动" class="headerlink" title="一些不大的改动"></a>一些不大的改动</h2><p>&emsp;&emsp;首先是磁珠的选型，之前其实对磁珠的特性完全不了解，只是凭经验而已。磁珠是感性元件，但在特定的频率下又能表现出电阻特性，其标称值取100MHz频率下的阻值，以前不管什么处理器都用220Ω，这次根据野火大神的V2版本图换了个600Ω的。</p>
+<p>&emsp;&emsp;其次，之前没有仔细研读手册，原来F407的去耦电容除了每个VDD脚一个0.1uF以外，还要再并联一个4.7uF的电容。为了防止莫名其妙的问题，以后画板子之前还是先仔细研读手册为妙。</p>
+<h2 id="一些很大的改动"><a href="#一些很大的改动" class="headerlink" title="一些很大的改动"></a>一些很大的改动</h2><p>&emsp;&emsp;F407有一个PDR_ON引脚，上一集简单介绍过，当时直接接在了高电平上，后来看了一些资料才觉得有些草率，于是改成了10K电阻上拉到高电平，同时留了一个电阻位置（图上标NC），若调试需要，可以把上拉电阻拆下来焊到预留位置上，把该引脚下拉到低电平。这种冗余设计思想是呆某在工作中学到的（得意的猥琐笑容）。</p>
+<p><img src="/images/screenshot20191006_1.png" alt="PDR_ON引脚"></p>
+<font size="1" color="grey"><center>便于调试的冗余设计</center></font>
+
+<p>&emsp;&emsp;这次电源的部分改动也很大，DC-DC电路直接换了个MPS公司的MP2482芯片，简化了电路，并且把拨动开关改成了自锁开关，力求高级感：</p>
+<p><img src="/images/screenshot20191006_2.png" alt="新DC-DC电路"></p>
+<font size="1" color="grey"><center>元器件画法改了，看起来清爽一些</center></font>
+
+<p>&emsp;&emsp;稳压输出3.3V之后，新增了一个MT9700组成的限流电路，防止输入电源变化，将电流限制在2A以下，提高安全性和可靠性：</p>
+<p><img src="/images/screenshot20191006_3.png" alt="2A限流电路"></p>
+<font size="1" color="grey"><center>限流输出</center></font>
+
+<h1 id="一些板载设备的增添"><a href="#一些板载设备的增添" class="headerlink" title="一些板载设备的增添"></a>一些板载设备的增添</h1><h2 id="又见USB"><a href="#又见USB" class="headerlink" title="又见USB"></a>又见USB</h2><p>&emsp;&emsp;首先要说明一下，上集中U转串电路中的USB接口用了mini头，但由于呆某找到了全脚贴片的micro-USB头，所以把那个mini头改回了micro头。</p>
+<p><img src="/images/screenshot20191117_1.png" alt="USB口"></p>
+<font size="1" color="grey"><center>USB-OTG和USB-Host</center></font>
+
+<p>&emsp;&emsp;见上图，上面的micro头做的是OTG接口，即On-The-Go技术，本身USB通信是主-从模式，如果没有主机，则设备间无法正常通讯。但OTG可以让USB设备之间在没有主机的情况下进行通讯，通过信号控制micro头的ID引脚的电平，可以让设备在Host和Slave两种状态间切换。这样，在开发板完成后，就可以通过编程让开发板直接控制一些其他的USB终端设备。下面的USB Type-A接口和电脑上的USB口是一样的，用来实现Host功能。</p>
+<h2 id="嘀嘀嘀"><a href="#嘀嘀嘀" class="headerlink" title="嘀嘀嘀"></a>嘀嘀嘀</h2><p>&emsp;&emsp;接下来加入的是一个烦人的小东西，蜂鸣器。还记得一年前阿呆在学校用老师自己画的STM32F2的板子做实验的时候，由于老师的例程中有相关编写，每次烧录完程序，板子启动时蜂鸣器都会“嘀”一下。因为是计算机专业不是电子专业，当时同学们搞裸机开发这种偏硬件的东西，上手起来都没有阿呆快（毕竟呆某有奇怪的天赋），他们还不知道为什么会嘀嘀响的时候，阿呆就把那条语句贴到了while(1)的语句块里面……哎，他们又不敢打我，只好等我自己把程序改掉咯。</p>
+<p><img src="/images/screenshot20191117_2.png" alt="蜂鸣器"></p>
+<font size="1" color="grey"><center>蜂鸣器的驱动</center></font>
+
+<p>&emsp;&emsp;见上图，蜂鸣器是一个感性元件，用一个8050作为开关，当单片机引脚输出高电平时，三极管导通，蜂鸣器发声。更可以通过控制单片机引脚的信号波形，让蜂鸣器发出不同的音调，只不过，从音乐角度上讲，蜂鸣器的声音太难听了。为了抑制瞬态变化，基极用一个10k电阻下拉，防止蜂鸣器误发声，蜂鸣器的两端也要加一个续流二极管，对瞬态电流进行补偿。</p>
+<h2 id="加速度传感器"><a href="#加速度传感器" class="headerlink" title="加速度传感器"></a>加速度传感器</h2><p>&emsp;&emsp;加速度传感器这个东西阿呆现在还不是非常熟悉，因为只在毕业设计的时候跟着研究生学长部署过一个自带API的陀螺仪。总的来说，加速度传感器运用了压电效应的原理，测量物体的加速度，进而获取物体当前的运动状态。在很多运用到新技术的自动化设备中，都少不了加速度传感器的踪影。</p>
+<p><img src="/images/screenshot20191117_3.png" alt="加速度计"></p>
+<font size="1" color="grey"><center>加速度传感器</center></font>
+
+<p>&emsp;&emsp;上面这里传感器的选型是MPU6050，封装非常小巧，通信接口为I2C接口，上电驱动后，芯片会获取以自身为原点，物体在三维空间中的运动情况，并通过I2C发送给处理器。</p>
+<h2 id="WIFI"><a href="#WIFI" class="headerlink" title="WIFI"></a>WIFI</h2><p><img src="/images/screenshot20191117_4.png" alt="WiFi"></p>
+<font size="1" color="grey"><center>其实就往板子上放了个WiFi模块</center></font>
+
+<p>&emsp;&emsp;目前局域无线网主要应用在室内物联网方面，其中集成处理器和Wifi收发芯片ESP8266这两年像网红一样被各路神仙创客up主选用，不过工业上用得好像不多。这里阿呆本想自己根据8266的手册搭电路，却发现PCB天线的绘制是门学问，没有学过专业课程，不会算增益，线就画不出来。想照抄一个，问了一下师父，又得知天线周围的布板也有很多讲究，为了防止失误，就直接把官方的Wifi模块做成封装画上来了。</p>
+<h2 id="其他的一些小东西"><a href="#其他的一些小东西" class="headerlink" title="其他的一些小东西"></a>其他的一些小东西</h2><p>&emsp;&emsp;除了以上几个比较重要的设备以外，阿呆还部署了一些比较基础的，如红外、温湿度、光强等几种传感器，还有按键/电容按键。按键只象征性地做了三个，因为板子上还要部署触屏，按键多了没必要，不过以后做8位机的大板可以部署个4x4矩阵按键。电路都非常简单，就不想贴图了。</p>
+<h1 id="最近的一些思考"><a href="#最近的一些思考" class="headerlink" title="最近的一些思考"></a>最近的一些思考</h1><h2 id="工作和生活方面"><a href="#工作和生活方面" class="headerlink" title="工作和生活方面"></a>工作和生活方面</h2><h3 id="别指望任何人，你只能靠自己"><a href="#别指望任何人，你只能靠自己" class="headerlink" title="别指望任何人，你只能靠自己"></a>别指望任何人，你只能靠自己</h3><p>&emsp;&emsp;最近阿呆在工作上受挫比较多，项目接得邪门，坑一个接一个，没人管控，也没人愿意合作。做出来没有效益，想不做又不行，对于这种项目，似乎快点敷衍了事是最正确的选择。试用期项目的制定是师父定的，捅出个坑自己跳进去，固然有师父在项目管理上的问题，但是，我有机会去做前期评估和分析，也就是说有规避的机会，师父也说不想做这个可以换一个，可是我没有抓住。</p>
+<p>&emsp;&emsp;这可能是对有梦想之人的一点点伤害，不过阿呆想用自身的教训在这里说：出了校门，别再过分热血，不要因为一时逞强去接一些奇怪的项目，能不做就不要做，实在要做了，也先别急着动手，做之前先做个完善的评估。为什么这么说呢，其实没人在意你的技术强不强，公司研发部不是学校，技术强没人会夸你，结果和效益才是第一。技术好，做个无比华丽强悍的东西，但是没给公司带来一点效益，那你只是在做垃圾。</p>
+<h3 id="不要放弃希望"><a href="#不要放弃希望" class="headerlink" title="不要放弃希望"></a>不要放弃希望</h3><p>&emsp;&emsp;刚才那一段写得如此现实，下一段马上就这么热血。看这篇文章的人如果不了解阿呆，肯定觉得这丫脑子有毛病。但是这两者一点都不矛盾，做事情不过分热血，是摒弃鲁莽，注意谨慎；梦想和希望是你内心的力量，无论什么时候都不能放弃。当你怀疑自己能不能赢的时候，你已经输了。为什么奥特曼百战百胜，因为他们从没想过自己会输。8月份的阿呆觉得自己贼牛逼，来了这家公司，一定能在转正时候拿到升级直聘资格，从没想过自己可能评不上。那个月意气风发，热情洋溢，做东西又快又好，大家都对自己特别友善。后来项目踩了坑，跟关系好的同事聊了下，他们说本科生直聘悬，我就陷入了自我怀疑。直到最近的一次评比吃了瘪，才明白，当我怀疑自己能不能成功的时候，当我开始和别人不停比较，患得患失的时候，成功已经与我渐行渐远了。</p>
+<p>&emsp;&emsp;出师不利没关系，前期逆风的局翻盘是好翻的，正如刚刚所说，我不会再怀疑自己，不会再与他人比较快慢得失，先做好自己，做好那个意气风发牛逼哄哄的自己。</p>
+<h2 id="对于嵌入式的学习"><a href="#对于嵌入式的学习" class="headerlink" title="对于嵌入式的学习"></a>对于嵌入式的学习</h2><h3 id="单片机学习和前景的展望"><a href="#单片机学习和前景的展望" class="headerlink" title="单片机学习和前景的展望"></a>单片机学习和前景的展望</h3><p>&emsp;&emsp;目前在学的STM32，综合比较，网上最好的学习资料出自野火和原子两位大神。经过仔细比对，阿呆放弃了两者选一的想法，因为小孩子才做选择，成年人我全都要。</p>
+<p>&emsp;&emsp;硬件方面：野火的板子最近很多改动，EMC设计上要强于原子，不过原子的开源程度更高，连PCB走线都能发出来，所以在电路设计上，最好两者结合着学。</p>
+<p>&emsp;&emsp;软件方面：野火的程序很多杂乱的自定义宏，意图增加可读性却起了反效果，不过文档上的讲解特别详细，从官方库的配置到交叉编译都有讲；原子的程序写得非常工整，但讲解不够详细，有时候知道一段程序写的是什么，却真心不知道为啥这么写。所以，最好两者结合着学。</p>
+<p>&emsp;&emsp;资料提供方面：两者视频、文档资料都非常全面，各有长处，最好两者结合着学。</p>
+<p>&emsp;&emsp;总之，STM32，最好两者结合着学。</p>
+<h3 id="之后的方向"><a href="#之后的方向" class="headerlink" title="之后的方向"></a>之后的方向</h3><p>&emsp;&emsp;因为阿呆电脑的使用情况日渐变遭，最近在攒钱换电脑，不过和小咪姑娘买房子交了头款，所以因为房贷，换电脑的计划严重滞后。总之，VR-STM做完之后，相当长的一段时间内阿呆会侧重编程，电路设计要多等一段时间之后了（到时候现在这台电脑上可能Cadence都要删掉）。</p>
+<p>&emsp;&emsp;目前野火和原子两位大神都在向Linux进军，基于iMX6U的ARM嵌入式系统开发板都快上市了。可以看出，现在软件确实是这个行业的发展趋势，软件能做的事情越来越多，集成电路的计算能力越来越强。对于阿呆来说，想要实现自己在音乐与技术结合之路上最终的目标，还是要从软件入手。电路上面的设计几乎都在参考手册和大神手稿，所以之后的博客不会像现在这几期一样详解电路了，再做新板子的时候，电路部分的讲解会尽量浓缩在一集。对于通信接口、总线/网络物理层这种比较核心的部分，之后会不定期地结合板子上的电路和相关编程来探讨。</p>
+<h1 id="下集预告"><a href="#下集预告" class="headerlink" title="下集预告"></a>下集预告</h1><p>&emsp;&emsp;VR-STM的原理设计在这集之前已经全部完成了，之后可能非常多期文章的冠名是其他系列。仙人板板的下一集会简述下VR-STM的测试成果，SC-STM最终改进版的预览，以及ARM的开坑。8位机在阿呆看来目前不会用到很多，可以搞完ARM再画。下期文章肯定是开一个新剧集了，具体是啥我不告诉你~</p>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+      
+    
+    
+
+    
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>阿呆</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="http://yoursite.com/2019/11/17/xrbb6/" title="“仙人板板”STM32版05 | 有时候也会不知所措">http://yoursite.com/2019/11/17/xrbb6/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" rel="noopener" target="_blank"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/STM32/" rel="tag"># STM32</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/08/07/xrbb5/" rel="next" title="“仙人板板”STM32版04 | 结局与开局">
+                <i class="fa fa-chevron-left"></i> “仙人板板”STM32版04 | 结局与开局
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/doge.jpg" alt="阿呆">
+            
+              <p class="site-author-name" itemprop="name">阿呆</p>
+              <div class="site-description motion-element" itemprop="description">全民制作人们大家好，我是学习嵌入式时长两年半的乐队吉他手阿呆，喜欢唱、跳、Rap、篮球、Music~</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">8</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">3</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">2</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/zh-CN" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+             </div>
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#改板"><span class="nav-number">1.</span> <span class="nav-text">改板</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一些不大的改动"><span class="nav-number">1.1.</span> <span class="nav-text">一些不大的改动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#一些很大的改动"><span class="nav-number">1.2.</span> <span class="nav-text">一些很大的改动</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#一些板载设备的增添"><span class="nav-number">2.</span> <span class="nav-text">一些板载设备的增添</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#又见USB"><span class="nav-number">2.1.</span> <span class="nav-text">又见USB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#嘀嘀嘀"><span class="nav-number">2.2.</span> <span class="nav-text">嘀嘀嘀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#加速度传感器"><span class="nav-number">2.3.</span> <span class="nav-text">加速度传感器</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#WIFI"><span class="nav-number">2.4.</span> <span class="nav-text">WIFI</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他的一些小东西"><span class="nav-number">2.5.</span> <span class="nav-text">其他的一些小东西</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#最近的一些思考"><span class="nav-number">3.</span> <span class="nav-text">最近的一些思考</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#工作和生活方面"><span class="nav-number">3.1.</span> <span class="nav-text">工作和生活方面</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#别指望任何人，你只能靠自己"><span class="nav-number">3.1.1.</span> <span class="nav-text">别指望任何人，你只能靠自己</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不要放弃希望"><span class="nav-number">3.1.2.</span> <span class="nav-text">不要放弃希望</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对于嵌入式的学习"><span class="nav-number">3.2.</span> <span class="nav-text">对于嵌入式的学习</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#单片机学习和前景的展望"><span class="nav-number">3.2.1.</span> <span class="nav-text">单片机学习和前景的展望</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#之后的方向"><span class="nav-number">3.2.2.</span> <span class="nav-text">之后的方向</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#下集预告"><span class="nav-number">4.</span> <span class="nav-text">下集预告</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">阿呆</span>
+
+  
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a href="https://hexo.io" class="theme-link" rel="noopener" target="_blank">Hexo</a> 强力驱动 v3.8.0</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 – <a href="https://theme-next.org" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a> v7.1.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+    
+
+    
+  </div>
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+
+  
+
+  
+
+
+  
+
+
+  
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
